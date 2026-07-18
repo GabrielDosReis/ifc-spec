@@ -2458,7 +2458,7 @@ of a \grammar{new-expression} with the global scope resolution operator (\code{:
 Abstract machine operation corresponding to allocating appropriate storage and default constructing an array of a given element type and length. 
 
 When used as the value of the \field{assoc} field of a \sortref{Dyadic}{ExprSort} structure, 
-that structure reprsents a \grammar{new-expression} of the form \code{new T[n]}, 
+that structure represents a \grammar{new-expression} of the form \code{new T[n]}, 
 and the \field{argument[0]} of that structure is an abstract reference designating the type \code{T} 
 and the \field{argument[1]} is an abstract reference designating the length \code{n}.
 
@@ -2681,6 +2681,7 @@ value of the \field{index} is to be interpreted as a value of type
 	\enumerator{Choice}
 	\enumerator{ConstructAt}
 	\enumerator{Initialize}
+	\enumerator{NewArray}
 
 	\setcounter{enumi}{1023}
 	\enumerator{Msvc}
@@ -2714,6 +2715,18 @@ of a \grammar{new-expression} with the global scope resolution operator (\code{:
 \ifcSortSection{Initialize}{TriadicOperator}
 
 C++ abstract machine operation.
+
+\ifcSortSection{NewArray}{TriadicOperator}
+Abstract machine operation corresponding to allocating appropriate storage for an array and initializing its elements
+when an initializer is present.
+
+When used as the value for the \field{assoc} field of a \sortref{Triad}{ExprSort} structure, that structure
+represents the semantic operation for an array \grammar{new-expression}, where
+\begin{itemize}
+	\item the first operand designates the array object type
+	\item the second operand designates the array bound
+	\item the third operand designates the initializer
+\end{itemize}
 
 \ifcSortSection{Msvc}{TriadicOperator}
 This is a marker, not an actual operator. Triadic operators with 
